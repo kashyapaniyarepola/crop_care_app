@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1084043693641",
+    "project_id": "crop-care-16d98",
+    "storage_bucket": "crop-care-16d98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084043693641:android:c3c01a87e6922a61407998",
+        "android_client_info": {
+          "package_name": "com.kashyapa.crop_care"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084043693641-m8jlrupi2bds38je42sa38d6k32p3ok6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiEGdagnz1dvfto5U1d1NwumZ-LR4pKro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084043693641-m8jlrupi2bds38je42sa38d6k32p3ok6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
