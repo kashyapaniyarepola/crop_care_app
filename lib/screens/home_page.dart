@@ -1,4 +1,7 @@
+import 'package:crop_care_app/screens/signin.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   static const routName = '/home';
@@ -9,6 +12,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  final _auth = FirebaseAuth.instance;
+
+  Future<void> signOut() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("  Do you want to Log out?"),
+        content: Container(
+          height: 70,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red)),
+                    onPressed: () async {
+                      await _auth.signOut();
+                      Navigator.of(context).pop();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignIn(),
+                        ),
+                      );
+                    },
+                    child: Text("Yes")),
+              ),
+              Expanded(flex: 1, child: Container()),
+              Expanded(
+                flex: 2,
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("No")),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ));
+  }
 
   Future<bool> _exitApp() async {
     return (await showDialog(
@@ -57,9 +104,10 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
                 onPressed: () {
-                  
+                  signOut();
                 },
                 icon: Icon(Icons.logout)),
+          
           ],
           title: Text("CropCare"),
         ),

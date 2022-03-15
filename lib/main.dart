@@ -1,92 +1,73 @@
 import 'package:flutter/material.dart';
-import 'screens/home_page.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      title: 'Named Routes Demo',
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => const MyApp(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/home': (context) => const HomePage(),
-      },
-    ),
-  );
+// screens
+import 'package:crop_care_app/screens/home_page.dart';
+import 'package:crop_care_app/screens/signup.dart';
+import 'package:crop_care_app/screens/signin.dart';
+
+// firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
+  
 }
+
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Screen'),
+    return MaterialApp(
+      title: 'Email And Password Login',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          },
-          child: const Text('Home'),
-        ),
-      ),
+      initialRoute: Initializer.routeName,
+      routes: {
+        Initializer.routeName: (context) => Initializer(),
+        SignIn.routeName: (context) => SignIn(),
+        HomePage.routName: (context) => HomePage(),
+      },
     );
-
-    
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-
-
-  final String title;
+class Initializer extends StatefulWidget {
+  static const routeName = '/initializer';
+  const Initializer({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _InitializerState createState() => _InitializerState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _InitializerState extends State<Initializer> {
+  late FirebaseAuth _auth;
+  late User? _user;
+  bool isLoading = true;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _auth = FirebaseAuth.instance;
+    _user = _auth.currentUser;
+    isLoading = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    return isLoading
+        ? Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          )
+        : _user == null
+            ? SignIn()
+            : HomePage();
   }
 }
