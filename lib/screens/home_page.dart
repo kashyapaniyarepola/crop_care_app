@@ -1,4 +1,5 @@
 import 'package:crop_care_app/screens/signin.dart';
+import 'package:crop_care_app/screens/form_handler.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -123,7 +124,10 @@ class _HomePageState extends State<HomePage> {
                   child: ElevatedButton(
                       style: ButtonStyle(),
                       onPressed: () {
-                       Navigator.pop(context);
+                       Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FormHandler()));
                       },
                       child: Text("Submit New Claim")),
                 ),

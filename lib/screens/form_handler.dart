@@ -6,12 +6,13 @@ import 'package:crop_care_app/models/location.dart';
 import 'package:crop_care_app/models/media.dart';
 import 'package:crop_care_app/models/media_url.dart';
 import 'package:crop_care_app/models/personal_info.dart';
+
 import 'package:crop_care_app/screens/claim-form/claim_estimation.dart';
-// import 'package:crop_care_app/screens/claim-form/personal_information.dart';
-// import 'package:crop_care_app/screens/claim-form/photo_upload.dart';
+import 'package:crop_care_app/screens/claim-form/personal_information.dart';
+import 'package:crop_care_app/screens/claim-form/land_information.dart';
+import 'package:crop_care_app/screens/claim-form/photo_upload.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
-// import 'claim-form/land_information.dart';
 
 class YearMonth {
   String? month;
@@ -139,32 +140,32 @@ class _FormHandlerState extends State<FormHandler>
                     child: TabBarView(
                       controller: _tabController,
                       children: <Widget>[
-                        // PersonalInformation(
-                        //   personalInfo: personalInfo,
-                        //   media: media,
-                        //   increasePageNumber: increasePageNumber,
-                        // ),
-                        // LandInformation(
-                        //   landInformation: landInfo,
-                        //   media: media,
-                        //   increasePageNumber: increasePageNumber,
-                        // ),
+                        PersonalInformation(
+                          personalInfo: personalInfo,
+                          media: media,
+                          increasePageNumber: increasePageNumber,
+                        ),
+                        LandInformation(
+                          landInformation: landInfo,
+                          media: media,
+                          increasePageNumber: increasePageNumber,
+                        ),
                         EstimationPage(
                           estimation: estimation,
                           yearMonth: yearMonth,
                           increasePageNumber: increasePageNumber,
                         ),
-                        // PhotoUpload(
-                        //   formKey: _formKey,
-                        //   media: media,
-                        //   imagePicked: imagePicked,
-                        //   increasePageNumber: increasePageNumber,
-                        //   estimation: estimation,
-                        //   personalInfo: personalInfo,
-                        //   location: location,
-                        //   landInfo: landInfo,
-                        //   mediaUrl: mediaUrl,
-                        // ),
+                        PhotoUpload(
+                          formKey: _formKey,
+                          media: media,
+                          imagePicked: imagePicked,
+                          increasePageNumber: increasePageNumber,
+                          estimation: estimation,
+                          personalInfo: personalInfo,
+                          location: location,
+                          landInfo: landInfo,
+                          mediaUrl: mediaUrl,
+                        ),
                       ],
                     ),
                   ),

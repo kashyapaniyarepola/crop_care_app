@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'package:crop_care_app/constant/constant.dart';
+
 Authentication authentication = Authentication();
 
 Widget otpScreen(BuildContext context, TextEditingController smsController,
@@ -71,4 +73,49 @@ Widget otpScreen(BuildContext context, TextEditingController smsController,
       ),
     ),
   );
+}
+
+displayDialog(BuildContext context, String message) async {
+  return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Container(
+            height: 240,
+            width: 200,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('WARNING',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                SizedBox(height: 10),
+                Icon(Icons.warning_amber_rounded,
+                    color: Colors.orange, size: 60),
+                SizedBox(height: 10),
+                Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 17,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  width: 200,
+                  child: ElevatedButton(
+                    child: Text('CLOSE'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      });
 }
