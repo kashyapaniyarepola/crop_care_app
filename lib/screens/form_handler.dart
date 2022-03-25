@@ -6,7 +6,7 @@ import 'package:crop_care_app/models/location.dart';
 import 'package:crop_care_app/models/media.dart';
 import 'package:crop_care_app/models/media_url.dart';
 import 'package:crop_care_app/models/personal_info.dart';
-import 'package:crop_care_app/screens/claim-form/claim-estimation.dart';
+import 'package:crop_care_app/screens/claim-form/claim_estimation.dart';
 // import 'package:crop_care_app/screens/claim-form/personal_information.dart';
 // import 'package:crop_care_app/screens/claim-form/photo_upload.dart';
 import 'package:flutter/material.dart';
