@@ -1,5 +1,7 @@
 import 'package:crop_care_app/screens/signin.dart';
 import 'package:crop_care_app/screens/form_handler.dart';
+import 'package:crop_care_app/screens/claim_status.dart';
+import 'package:crop_care_app/screens/messages/govt_messages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -137,6 +139,10 @@ class _HomePageState extends State<HomePage> {
                   width: 200,
                   child: ElevatedButton(
                       onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ClaimStatus()));
                         
                       },
                       child: const Text("View My Claims")),
@@ -147,6 +153,11 @@ class _HomePageState extends State<HomePage> {
                   width: 200,
                   child: ElevatedButton(
                       onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Messages()
+                                ));
                         
                       },
                       child: const Text("Government Messages")),
