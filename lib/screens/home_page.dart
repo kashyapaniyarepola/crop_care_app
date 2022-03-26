@@ -4,7 +4,14 @@ import 'package:crop_care_app/screens/claim_status.dart';
 import 'package:crop_care_app/screens/messages/govt_messages.dart';
 import 'package:flutter/material.dart';
 
+import 'package:crop_care_app/services/notification.dart';
+import 'package:crop_care_app/services/authentication.dart';
+import 'package:crop_care_app/services/form_service.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   static const routName = '/home';
@@ -17,6 +24,38 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   final _auth = FirebaseAuth.instance;
+  FormService formService = FormService();
+  final FirebaseMessaging fcm = FirebaseMessaging.instance;
+  final Authentication authentication = Authentication();
+
+  @override
+  void initState() {
+    super.initState();
+    formService.newFetchForm();
+    authentication.updateToken();
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+      RemoteNotification notification = message.notification!;
+      // AndroidNotification android = message.notification!.android!;
+
+      await _showNotification(notification);
+    });
+  }
+
+  Future<void> _showNotification(RemoteNotification notification) async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+            'high_importance_channel', 'High Importance Notifications',
+            channelDescription:
+                'This channel is used for important notifications.',
+            importance: Importance.max,
+            priority: Priority.high,
+            ticker: 'ticker');
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+        0, notification.title, notification.body, platformChannelSpecifics,
+        payload: 'item x');
+  }
 
   Future<void> signOut() async {
     return (await showDialog(

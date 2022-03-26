@@ -5,6 +5,8 @@ import 'package:crop_care_app/screens/home_page.dart';
 import 'package:crop_care_app/screens/signup.dart';
 import 'package:crop_care_app/screens/signin.dart';
 
+import 'package:crop_care_app/services/notification.dart';
+
 // firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +20,9 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  await Notifications.init();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
   runApp(MyApp());
   
