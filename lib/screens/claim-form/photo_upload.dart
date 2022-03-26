@@ -255,11 +255,11 @@ class _PhotoUploadState extends State<PhotoUpload> {
             width: size.width * 0.5,
             child: ElevatedButton(
               onPressed: () async {
-                // position = await locationService.getLocation(context);
-                // if (position != null) {
-                //   widget.location.latitude = position?.latitude;
-                //   widget.location.longitude = position?.longitude;
-                // }
+                position = await locationService.getLocation(context);
+                if (position != null) {
+                  widget.location.latitude = position?.latitude;
+                  widget.location.longitude = position?.longitude;
+                }
                 if (widget.media?.image1 == null) {
                   imgFromCamera("image1");
                 } else if (widget.media?.image2 == null) {
