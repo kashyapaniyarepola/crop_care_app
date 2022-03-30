@@ -86,8 +86,8 @@ class _FormHandlerState extends State<FormHandler>
                     flex: 2,
                     child: ElevatedButton(
                         style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.red)),
+                          backgroundColor:
+                              MaterialStateProperty.all(Color.fromARGB(255, 245, 120, 62))),
                         onPressed: () {
                           Navigator.of(context).pop();
                           Navigator.of(context).pop();
@@ -98,6 +98,9 @@ class _FormHandlerState extends State<FormHandler>
                   Expanded(
                     flex: 2,
                     child: ElevatedButton(
+                      style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                      ),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -117,7 +120,8 @@ class _FormHandlerState extends State<FormHandler>
       onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("New Claim Form"),
+          title: Text("Submit a Claim"),
+          backgroundColor: Color.fromARGB(255, 80, 141, 82),
         ),
         body: PageView(
           controller: _pageController,
@@ -192,7 +196,8 @@ class _FormHandlerState extends State<FormHandler>
                                       duration: Duration(milliseconds: 250));
                                 }
                               },
-                              child: Text("Back"))
+                              child: Text("Back",
+                              style: TextStyle(color: Color.fromARGB(255, 7, 190, 44))))
                           : Text(""),
                     ),
                     Expanded(
@@ -217,7 +222,8 @@ class _FormHandlerState extends State<FormHandler>
                                   _tabController.animateTo(3);
                                 }
                               },
-                              child: Text("Next"),
+                              child: Text("Next",
+                              style: TextStyle(color: Color.fromARGB(255, 7, 190, 44))),
                             )
                           : Text(""),
                     ),

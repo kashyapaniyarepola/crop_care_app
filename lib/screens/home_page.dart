@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
     return (await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("  Do you want to Log out?"),
+        title: Text("  Do you want to Logout?"),
         content: Container(
           height: 70,
           child: Row(
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                 flex: 2,
                 child: ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.red)),
+                        backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 245, 120, 62))),
                     onPressed: () async {
                       await _auth.signOut();
                       Navigator.of(context).pop();
@@ -87,6 +87,9 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 flex: 2,
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                      ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -123,6 +126,9 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     flex: 2,
                     child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                      ),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -142,6 +148,8 @@ class _HomePageState extends State<HomePage> {
       onWillPop: () => _exitApp(),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 80, 141, 82),
+          centerTitle: true,
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
@@ -160,10 +168,12 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 40,
+                  height: 50,
                   width: 200,
                   child: ElevatedButton(
-                      style: ButtonStyle(),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                      ),
                       onPressed: () {
                        Navigator.push(
                             context,
@@ -174,9 +184,12 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 20),
                 Container(
-                  height: 40,
+                  height: 50,
                   width: 200,
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                      ),
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -187,20 +200,20 @@ class _HomePageState extends State<HomePage> {
                       child: const Text("View My Claims")),
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  height: 40,
-                  width: 200,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Messages()
-                                ));
+                // Container(
+                //   height: 40,
+                //   width: 200,
+                //   child: ElevatedButton(
+                //       onPressed: () {
+                //         Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) => Messages()
+                //                 ));
                         
-                      },
-                      child: const Text("Government Messages")),
-                ),
+                //       },
+                //       child: const Text("Government Messages")),
+                // ),
               ],
             ),
           ),

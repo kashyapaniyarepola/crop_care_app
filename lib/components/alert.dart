@@ -58,6 +58,9 @@ Widget otpScreen(BuildContext context, TextEditingController smsController,
           Container(
             width: 300,
             child: ElevatedButton(
+              style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                     ),
               child: Text('SUBMIT'),
               onPressed: () async {
                 PhoneAuthCredential credential = PhoneAuthProvider.credential(

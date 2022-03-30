@@ -262,7 +262,8 @@ class _SubmitPageState extends State<SubmitPage> {
     return Scaffold(
       appBar: !isUploading
           ? AppBar(
-              title: Text("Submit"),
+              backgroundColor: Color.fromARGB(255, 80, 141, 82),
+              title: Text("Confirm Submission"),
             )
           : AppBar(
               elevation: 0.0,
@@ -277,7 +278,11 @@ class _SubmitPageState extends State<SubmitPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(child: Text("Do you want to submit this form?")),
+                  Container(child: Text("Do you want to submit this claim?",
+                  style: TextStyle(  
+                          fontSize: 20,  
+                          color: Colors.green,  
+                            fontWeight: FontWeight.w700, ))),
                   SizedBox(height: 30),
                   Container(
                     width: size.width * 0.5,
@@ -288,12 +293,15 @@ class _SubmitPageState extends State<SubmitPage> {
                       child: Text("Go back"),
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.black54)),
+                              MaterialStateProperty.all(Color.fromARGB(137, 5, 44, 17))),
                     ),
                   ),
                   Container(
                     width: size.width * 0.5,
                     child: ElevatedButton(
+                      style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                      ),
                       onPressed: () async {
                         await mediaUpdate();
                       },
@@ -309,7 +317,7 @@ class _SubmitPageState extends State<SubmitPage> {
                       child: Text("Clear all and Cancel"),
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.red[700])),
+                              MaterialStateProperty.all(Color.fromARGB(255, 245, 120, 62))),
                     ),
                   ),
                 ],

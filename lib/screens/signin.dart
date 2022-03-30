@@ -96,11 +96,12 @@ class _SignInState extends State<SignIn> {
                           children: <Widget>[
                             SizedBox(
                               height: 300,
-                              // child: Image.asset(
-                              //   "assets/Cropzone.png",
-                              //   fit: BoxFit.contain,
-                              // ),
+                              child: Image.asset(
+                                "assets/logo.jpeg",
+                                fit: BoxFit.contain,
+                              ),
                             ),
+                            const SizedBox(height: 20),
                             TextFormField(
                               controller: phoneController,
                               autofocus: false,
@@ -138,7 +139,7 @@ class _SignInState extends State<SignIn> {
                                   vertical: 14,
                                   horizontal: 15,
                                 ),
-                                hintText: "Enter your Phone Number",
+                                hintText: "Enter Your Mobile Number",
                                 hintStyle: TextStyle(
                                   fontSize: 18,
                                 ),
@@ -203,7 +204,7 @@ class _SignInState extends State<SignIn> {
                                                 );
                                   },
                                   child: Text(
-                                    "Sign Up",
+                                    "Register",
                                     style: TextStyle(
                                       color: Colors.green.shade900,
                                       fontWeight: FontWeight.bold,

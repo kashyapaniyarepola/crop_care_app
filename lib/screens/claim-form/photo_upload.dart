@@ -153,13 +153,16 @@ class _PhotoUploadState extends State<PhotoUpload> {
           child: Column(
             children: [
               Text(
-                "Choose video source",
+                "Select an option",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               SizedBox(height: 20),
               Container(
                 width: 150,
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -174,6 +177,9 @@ class _PhotoUploadState extends State<PhotoUpload> {
               Container(
                 width: 150,
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -278,12 +284,16 @@ class _PhotoUploadState extends State<PhotoUpload> {
                   ? Text("Take Picture again")
                   : Text("Take a Picture"),
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.black54)),
+                  backgroundColor: MaterialStateProperty.all(Color.fromARGB(137, 3, 63, 23))),
             ),
           ),
           Container(
             width: size.width * 0.5,
             child: ElevatedButton(
+              style: ButtonStyle(
+                 backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+              ),
+              
               onPressed: () async {
                 isFormValidate = validation.validateForm(widget.personalInfo,
                     widget.landInfo, widget.estimation, context);

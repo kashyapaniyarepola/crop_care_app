@@ -117,7 +117,7 @@ class _SignUpState extends State<SignUp> {
                             children: <Widget>[
                               SizedBox(
                                 // child: Image.asset(
-                                //   "assets/Cropzone.png",
+                                //   "assets/logo.jpeg",
                                 //   scale: 0.6,
                                 // ),
                               ),
@@ -263,7 +263,7 @@ class _SignUpState extends State<SignUp> {
                                     vertical: 14,
                                     horizontal: 15,
                                   ),
-                                  hintText: "Enter your Phone Number",
+                                  hintText: "Enter Your Mobile Number",
                                   hintStyle: TextStyle(
                                     fontSize: 18,
                                   ),
@@ -296,7 +296,7 @@ class _SignUpState extends State<SignUp> {
                                     }
                                   },
                                   child: const Text(
-                                    "Continue",
+                                    "Register",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 20,

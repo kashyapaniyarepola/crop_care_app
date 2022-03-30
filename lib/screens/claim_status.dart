@@ -60,6 +60,7 @@ class _ClaimStatusState extends State<ClaimStatus> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 80, 141, 82),
         title: Text("Claim Status"),
       ),
       body: SingleChildScrollView(
@@ -79,7 +80,7 @@ class _ClaimStatusState extends State<ClaimStatus> {
                         dataRowColor:
                             MaterialStateProperty.all(Colors.grey[200]),
                         headingRowColor:
-                            MaterialStateProperty.all(Colors.grey[700]),
+                            MaterialStateProperty.all(Color.fromARGB(255, 3, 71, 6)),
                         dataRowHeight: 30,
                         horizontalMargin: 20,
                         columnSpacing: 100,
@@ -99,12 +100,20 @@ class _ClaimStatusState extends State<ClaimStatus> {
                     heightFactor: 10,
                     child: Column(
                       children: [
-                        Text("Claim status is empty"),
+                        Text("You haven't submitted claims",
+                        style: TextStyle(  
+                          fontSize: 20,  
+                          color: Colors.green,  
+                            fontWeight: FontWeight.w700, )
+                        ),
                         SizedBox(height: 10),
-                        Text("Please submit a claim first"),
+                        Text("Please submit a claim",
+                        style: TextStyle(  
+                          fontSize: 16,)
+                        ),
                       ],
                     ),
-                  ),
+                  ),    
       ),
     );
   }
