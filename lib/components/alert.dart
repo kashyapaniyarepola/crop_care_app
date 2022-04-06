@@ -109,6 +109,9 @@ displayDialog(BuildContext context, String message) async {
                 Container(
                   width: 200,
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                    ),
                     child: Text('CLOSE'),
                     onPressed: () {
                       Navigator.of(context).pop();
